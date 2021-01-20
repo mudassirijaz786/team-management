@@ -16,13 +16,10 @@ import { AuthModule } from './auth/auth.module';
       autoLoadEntities: true,
       ssl: { rejectUnauthorized: false },
       port: 5432,
-      host:
-        process.env.POSTGRES_HOST || 'ec2-23-20-205-19.compute-1.amazonaws.com',
-      database: process.env.POSTGRES_DATABASE || 'd6afis5v152uen',
-      username: process.env.POSTGRES_USERNAME || 'cqxdmqmmerzscz',
-      password:
-        process.env.POSTGRES_PASSWORD ||
-        '48eba795ff802f839562b4e936949a4801d5c543d921d2ba953abdd329138654',
+      host: process.env.POSTGRES_HOST || 'localhost',
+      database: process.env.POSTGRES_DATABASE || 'nest',
+      username: process.env.POSTGRES_USERNAME || 'kwanso_user',
+      password: process.env.POSTGRES_PASSWORD || 'kwanso_password',
     }),
     GraphQLModule.forRoot({
       playground: true,
