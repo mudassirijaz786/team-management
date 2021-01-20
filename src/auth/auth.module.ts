@@ -9,15 +9,14 @@ import { UsersModule } from '../users/users.module';
 import { AuthOptionsService } from './auth-options.service';
 import { AuthResolver } from './auth.resolver';
 import { AuthService } from './auth.service';
-import { JwtStrategy } from './jwt.strategy';
 
 @Module({
   imports: [
     JwtModule.registerAsync({
       useFactory: () => ({
-        secret: 'kwan$0',
+        secret: process.env.JWT_SECRET,
         signOptions: {
-          expiresIn: 86400,
+          expiresIn: process.env.JWT_EXPIRY,
         },
       }),
     }),
@@ -27,7 +26,7 @@ import { JwtStrategy } from './jwt.strategy';
     TypeOrmModule.forFeature([User]),
     UsersModule,
   ],
-  providers: [AuthResolver, AuthService, JwtStrategy],
+  providers: [AuthResolver, AuthService],
   exports: [AuthService],
 })
 export class AuthModule {}
