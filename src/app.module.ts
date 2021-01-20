@@ -18,6 +18,9 @@ import { AuthModule } from './auth/auth.module';
         process.env.NODE_ENV === 'development'
           ? process.env.DATABASE_URL_DEV
           : process.env.DATABASE_URL,
+      extra: {
+        ssl: true,
+      },
     }),
     GraphQLModule.forRoot({
       playground: true,
