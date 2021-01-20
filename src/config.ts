@@ -9,6 +9,7 @@ export const config = () => ({
     database: process.env.DATABASE,
     synchronize: true,
     logging: false,
+    url: process.env.DATABASE_URL,
     entities: ['dist/**/*.entity.js'],
   },
 });
