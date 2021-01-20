@@ -14,10 +14,11 @@ import { AuthModule } from './auth/auth.module';
     TypeOrmModule.forRoot({
       type: 'postgres',
       autoLoadEntities: true,
-      url:
-        process.env.NODE_ENV === 'production'
-          ? process.env.DATABASE_URL
-          : process.env.DATABASE_URL_DEV,
+      port: 5432,
+      host: process.env.POSTGRES_HOST || 'localhost',
+      database: process.env.POSTGRES_DATABASE || 'nest',
+      username: process.env.POSTGRES_USERNAME || 'kwanso_user',
+      password: process.env.POSTGRES_PASSWORD || 'kwanso_password',
     }),
     GraphQLModule.forRoot({
       playground: true,
