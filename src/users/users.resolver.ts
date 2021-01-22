@@ -14,7 +14,7 @@ export class UsersResolver {
 
   // @UseGuards(GqlAuthGuard, RolesGuard)
   // @Roles([UserRole.ADMIN])
-  // @Query(() => [User])
+  @Query(() => [User])
   async users(): Promise<User[]> {
     const users = await this.usersService.findAll();
     return users;
