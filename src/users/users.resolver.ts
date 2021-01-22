@@ -7,14 +7,20 @@ import { GqlAuthGuard } from '../auth/gql-auth.guard';
 import { User } from './users.entity';
 import { UserRole } from './users.interface';
 import { UsersService } from './users.service';
+import { GraphQLScalarType } from 'graphql';
+
+interface IUser {
+  name: string;
+  followers: number;
+}
 
 @Resolver(() => User)
 export class UsersResolver {
   constructor(private readonly usersService: UsersService) {}
 
-  @UseGuards(GqlAuthGuard, RolesGuard)
-  @Roles([UserRole.ADMIN])
-  @Query(() => [User])
+  // @UseGuards(GqlAuthGuard, RolesGuard)
+  // @Roles([UserRole.ADMIN])
+  // @Query(() => [User])
   async users(): Promise<User[]> {
     const users = await this.usersService.findAll();
     return users;
