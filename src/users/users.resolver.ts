@@ -7,12 +7,6 @@ import { GqlAuthGuard } from '../auth/gql-auth.guard';
 import { User } from './users.entity';
 import { UserRole } from './users.interface';
 import { UsersService } from './users.service';
-import { GraphQLScalarType } from 'graphql';
-
-interface IUser {
-  name: string;
-  followers: number;
-}
 
 @Resolver(() => User)
 export class UsersResolver {
